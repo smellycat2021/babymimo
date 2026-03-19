@@ -21,6 +21,31 @@
 
     html { scroll-behavior: smooth; }
 
+    .app-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .app-icons img {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transform: rotate(-6deg);
+    }
+    .app-icons img.center-icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      transform: rotate(0deg);
+      box-shadow: 0 6px 24px rgba(255,45,120,0.25);
+    }
+    .app-icons img:last-child {
+      transform: rotate(6deg);
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--dark);
@@ -202,8 +227,7 @@
     .video-card video {
       width: 100%;
       display: block;
-      max-height: 480px;
-      object-fit: cover;
+      object-fit: contain;
       background: #000;
     }
     .video-card-label {
@@ -331,12 +355,20 @@
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">🍼 Baby Mimo</a>
+  <a class="nav-logo" href="#">
+    <img src="media/wassup unknown.png" alt="Baby Mimo" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;">
+    Baby Mimo
+  </a>
   <a class="nav-cta" href="https://testflight.apple.com/join/ztEPdnjg" target="_blank">Join Beta</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="app-icons">
+    <img src="media/wassup boy.png" alt="Baby Mimo boy" />
+    <img src="media/wassup unknown.png" alt="Baby Mimo" class="center-icon" />
+    <img src="media/wassup girl.png" alt="Baby Mimo girl" />
+  </div>
   <div class="hero-badge">🎉 Now in Beta — Join Free</div>
   <h1>Every precious moment,<br><span>captured forever.</span></h1>
   <p>Baby Mimo is a private, family-centered app for logging milestones, tracking daily activities, and sharing your baby's journey with the people who love them most.</p>
