@@ -270,10 +270,12 @@
     /* Phone frame wrapper */
     .phone-frame {
       display: inline-block;
-      background: var(--pink);
+      background: #1a1a1a;
       border-radius: 46px;
       padding: 8px;
-      box-shadow: 0 24px 48px rgba(255,45,120,0.2);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.25);
+      overflow: hidden;
+      transform: translateZ(0);
     }
 
     /* Solo videos */
@@ -299,13 +301,13 @@
     .video-card {
       background: white;
       border-radius: var(--radius);
-      overflow: hidden;
       box-shadow: 0 2px 16px rgba(0,0,0,0.08);
       flex-shrink: 0;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 16px 16px;
     }
     .video-card-label {
       padding: 12px 14px 10px;
@@ -321,6 +323,7 @@
       display: block;
       object-fit: contain;
       background: #000;
+      border-radius: 36px;
     }
 
     @media (max-width: 600px) {
@@ -650,23 +653,23 @@
     <div class="video-grid">
       <div class="video-card">
         <div class="video-card-label">🍎 Sign in with Apple — zero setup</div>
-        <video src="media/video - easy login through icloud.MP4#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - easy login through icloud.MP4#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🎙️ Tapless diaper log via Siri</div>
-        <video src="media/video - tapless diaper logging with siri.mp4#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - tapless diaper logging with siri.mp4#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🔒 Live status on your lock screen</div>
-        <video src="media/video - adding lock screen widget for live baby status.MOV#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - adding lock screen widget for live baby status.MOV#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">📬 Timeline to printed postcard</div>
-        <video src="media/video1 - timeline to postcard.mov#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video1 - timeline to postcard.mov#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🤰 Pregnancy to newborn transition</div>
-        <video src="media/video2 - pregancy to baby born transit.mov#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video2 - pregancy to baby born transit.mov#t=0.001" controls playsinline muted></video></div>
       </div>
     </div>
 
