@@ -261,10 +261,21 @@
     .video-pair-col video {
       height: 480px;
       width: auto;
-      border-radius: 12px;
+      border-radius: 36px;
       background: #000;
       object-fit: contain;
       display: block;
+    }
+
+    /* Phone frame wrapper */
+    .phone-frame {
+      display: inline-block;
+      background: #1a1a1a;
+      border-radius: 46px;
+      padding: 8px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.25);
+      overflow: hidden;
+      transform: translateZ(0);
     }
 
     /* Solo videos */
@@ -279,19 +290,24 @@
     }
     .video-grid {
       display: flex;
-      flex-wrap: wrap;
       gap: 24px;
-      justify-content: center;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
+    .video-grid::-webkit-scrollbar { height: 4px; }
+    .video-grid::-webkit-scrollbar-thumb { background: var(--pink-mid); border-radius: 4px; }
     .video-card {
       background: white;
       border-radius: var(--radius);
-      overflow: hidden;
       box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-      width: fit-content;
+      flex-shrink: 0;
+      scroll-snap-align: start;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 16px 16px;
     }
     .video-card-label {
       padding: 12px 14px 10px;
@@ -306,11 +322,13 @@
       width: auto;
       display: block;
       object-fit: contain;
-      background: #000;
+      border-radius: 36px;
     }
 
     @media (max-width: 600px) {
       .video-pair-row { grid-template-columns: 1fr; }
+      .video-pairs { gap: 48px; }
+      .video-pair-card { padding: 24px 16px; }
     }
 
     /* ── DAY TIMELINE ── */
@@ -376,14 +394,22 @@
     .features { background: white; }
     .features-inner { max-width: 960px; margin: 0 auto; }
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
       gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
+    .features-grid::-webkit-scrollbar { height: 4px; }
+    .features-grid::-webkit-scrollbar-thumb { background: var(--pink-mid); border-radius: 4px; }
     .feature-card {
       background: var(--light);
       border-radius: var(--radius);
       padding: 28px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      width: 260px;
     }
     .feature-icon {
       font-size: 2rem;
@@ -567,14 +593,14 @@
             <p>Share a private link. Family accepts and instantly sees the baby's full timeline, live status, and milestones.</p>
           </div>
         </div>
-        <div class="video-pair-row">
+        <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <video src="media/video - invite family members.MP4" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - invite family members.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👴 Uncle · Family</span>
-            <video src="media/video - family member accepts invite.MP4" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - family member accepts invite.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
         </div>
       </div>
@@ -587,14 +613,14 @@
             <p>Mom uses Siri to log a feed without touching the phone. Dad's app updates live — no refresh needed.</p>
           </div>
         </div>
-        <div class="video-pair-row">
+        <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <video src="media/video - tapless feed logging with siri.MP4" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - tapless feed logging with siri.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👨 Dad · Family</span>
-            <video src="media/video - shared baby's profile status got updated by syncing with mom's feed log event real time.MP4" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - shared baby's profile status got updated by syncing with mom's feed log event real time.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
         </div>
       </div>
@@ -607,14 +633,14 @@
             <p>Mom adds a milestone in seconds. Grandpa gets a push notification the moment it's saved — no matter where he is.</p>
           </div>
         </div>
-        <div class="video-pair-row">
+        <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <video src="media/video - new moment created effortlessly.MP4" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - new moment created effortlessly.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👴 Grandpa · Family</span>
-            <video src="media/video - uncle gets notification of new baby moment added by mom real time.MOV" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - uncle gets notification of new baby moment added by mom real time.MOV#t=0.001" controls playsinline muted></video></div>
           </div>
         </div>
       </div>
@@ -626,23 +652,23 @@
     <div class="video-grid">
       <div class="video-card">
         <div class="video-card-label">🍎 Sign in with Apple — zero setup</div>
-        <video src="media/video - easy login through icloud.MP4" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - easy login through icloud.MP4#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🎙️ Tapless diaper log via Siri</div>
-        <video src="media/video - tapless diaper logging with siri.mov" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - tapless diaper logging with siri.mp4#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🔒 Live status on your lock screen</div>
-        <video src="media/video - adding lock screen widget for live baby status.MOV" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - adding lock screen widget for live baby status.MOV#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">📬 Timeline to printed postcard</div>
-        <video src="media/video1 - timeline to postcard.mov" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video1 - timeline to postcard.mov#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🤰 Pregnancy to newborn transition</div>
-        <video src="media/video2 - pregancy to baby born transit.mov" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video2 - pregancy to baby born transit.mov#t=0.001" controls playsinline muted></video></div>
       </div>
     </div>
 
