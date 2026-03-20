@@ -383,14 +383,22 @@
     .features { background: white; }
     .features-inner { max-width: 960px; margin: 0 auto; }
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      display: flex;
       gap: 24px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
     }
+    .features-grid::-webkit-scrollbar { height: 4px; }
+    .features-grid::-webkit-scrollbar-thumb { background: var(--pink-mid); border-radius: 4px; }
     .feature-card {
       background: var(--light);
       border-radius: var(--radius);
       padding: 28px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      width: 260px;
     }
     .feature-icon {
       font-size: 2rem;
