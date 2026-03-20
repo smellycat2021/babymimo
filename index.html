@@ -261,10 +261,47 @@
     .video-pair-col video {
       height: 480px;
       width: auto;
-      border-radius: 12px;
+      border-radius: 36px;
       background: #000;
       object-fit: contain;
       display: block;
+    }
+
+    /* Phone frame wrapper */
+    .phone-frame {
+      position: relative;
+      display: inline-block;
+      background: #1a1a1a;
+      border-radius: 46px;
+      padding: 14px 8px;
+      box-shadow:
+        0 0 0 1.5px #3a3a3a,
+        0 24px 48px rgba(0,0,0,0.25);
+    }
+    /* Dynamic island */
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      height: 10px;
+      background: #000;
+      border-radius: 8px;
+      z-index: 1;
+    }
+    /* Side buttons */
+    .phone-frame::after {
+      content: '';
+      position: absolute;
+      right: -3px;
+      top: 100px;
+      width: 3px;
+      height: 60px;
+      background: #2a2a2a;
+      border-radius: 0 2px 2px 0;
+      box-shadow: 0 80px 0 #2a2a2a;
     }
 
     /* Solo videos */
@@ -290,13 +327,13 @@
     .video-card {
       background: white;
       border-radius: var(--radius);
-      overflow: hidden;
       box-shadow: 0 2px 16px rgba(0,0,0,0.08);
       flex-shrink: 0;
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 16px 16px;
     }
     .video-card-label {
       padding: 12px 14px 10px;
@@ -585,11 +622,11 @@
         <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <video src="media/video - invite family members.MP4#t=0.001" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - invite family members.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👴 Uncle · Family</span>
-            <video src="media/video - family member accepts invite.MP4#t=0.001" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - family member accepts invite.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
         </div>
       </div>
@@ -605,11 +642,11 @@
         <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <video src="media/video - tapless feed logging with siri.MP4#t=0.001" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - tapless feed logging with siri.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👨 Dad · Family</span>
-            <video src="media/video - shared baby's profile status got updated by syncing with mom's feed log event real time.MP4#t=0.001" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - shared baby's profile status got updated by syncing with mom's feed log event real time.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
         </div>
       </div>
@@ -625,11 +662,11 @@
         <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <video src="media/video - new moment created effortlessly.MP4#t=0.001" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - new moment created effortlessly.MP4#t=0.001" controls playsinline muted></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👴 Grandpa · Family</span>
-            <video src="media/video - uncle gets notification of new baby moment added by mom real time.MOV#t=0.001" controls playsinline muted></video>
+            <div class="phone-frame"><video src="media/video - uncle gets notification of new baby moment added by mom real time.MOV#t=0.001" controls playsinline muted></video></div>
           </div>
         </div>
       </div>
@@ -641,23 +678,23 @@
     <div class="video-grid">
       <div class="video-card">
         <div class="video-card-label">🍎 Sign in with Apple — zero setup</div>
-        <video src="media/video - easy login through icloud.MP4#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - easy login through icloud.MP4#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🎙️ Tapless diaper log via Siri</div>
-        <video src="media/video - tapless diaper logging with siri.mp4#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - tapless diaper logging with siri.mp4#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🔒 Live status on your lock screen</div>
-        <video src="media/video - adding lock screen widget for live baby status.MOV#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video - adding lock screen widget for live baby status.MOV#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">📬 Timeline to printed postcard</div>
-        <video src="media/video1 - timeline to postcard.mov#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video1 - timeline to postcard.mov#t=0.001" controls playsinline muted></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🤰 Pregnancy to newborn transition</div>
-        <video src="media/video2 - pregancy to baby born transit.mov#t=0.001" controls playsinline muted></video>
+        <div class="phone-frame"><video src="media/video2 - pregancy to baby born transit.mov#t=0.001" controls playsinline muted></video></div>
       </div>
     </div>
 
