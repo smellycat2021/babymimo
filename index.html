@@ -158,6 +158,58 @@
       color: var(--gray);
     }
 
+    /* ── CAROUSEL ── */
+    .carousel-container {
+      max-width: 560px;
+      margin: 60px auto 0;
+      position: relative;
+    }
+    .carousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+    .carousel-slide {
+      display: none;
+      width: 100%;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+    .carousel-slide.active {
+      display: block;
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 20px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .dot.active {
+      background: var(--pink);
+    }
+    .dot:hover {
+      background: var(--pink-mid);
+    }
+
     /* ── HERO SCREENSHOTS ── */
     .hero-screenshots {
       max-width: 900px;
@@ -403,6 +455,37 @@
     }
     .features-grid::-webkit-scrollbar { height: 4px; }
     .features-grid::-webkit-scrollbar-thumb { background: var(--pink-mid); border-radius: 4px; }
+
+    /* Mobile-only auto-scroll animations */
+    @media (max-width: 600px) {
+      .gallery-scroll {
+        animation: scrollRight 12s infinite linear;
+      }
+      .video-grid {
+        animation: scrollRight 14s infinite linear;
+      }
+      .features-grid {
+        animation: scrollRight 10s infinite linear;
+      }
+      @keyframes scrollRight {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-100% + 100vw - 48px)); }
+      }
+      /* Timeline items fade in sequentially */
+      .timeline-item {
+        animation: fadeIn 0.6s ease-out forwards;
+        opacity: 0;
+      }
+      .timeline-item:nth-child(1) { animation-delay: 0s; }
+      .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+      .timeline-item:nth-child(3) { animation-delay: 0.6s; }
+      .timeline-item:nth-child(4) { animation-delay: 0.9s; }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+
     .feature-card {
       background: var(--light);
       border-radius: var(--radius);
@@ -531,7 +614,8 @@
     <img src="media/wassup girl.png" alt="Baby Mimo girl" />
   </div>
   <div class="hero-badge">🎉 Pre-Order Now — Early Access Reward Inside</div>
-  <h1>The baby tracker your<br><span>whole family uses together.</span></h1>
+  <h1>You're thrilled to welcome this<br>little precious creature to your life,<br>but <span>you're also exhausted.</span></h1>
+  <p style="font-weight: 600; margin-top: 24px; margin-bottom: 12px; color: var(--dark);">Baby Mimo is your private family baby book.</p>
   <p>Start a feed with Siri. Your partner ends it. The nanny logs the diaper and captures a milestone. Grandpa sees it all — in real time.</p>
   <div class="hero-buttons">
     <a class="btn-primary" href="https://apps.apple.com/us/app/baby-mimo/id6757408670" target="_blank">
@@ -540,7 +624,24 @@
     <a class="btn-secondary" href="#features">See Features</a>
   </div>
   <p class="hero-note">Free to download · iOS · Available in English, español & 中文 · Sign in with Apple</p>
-   <div class="gallery-scroll">
+
+  <!-- Carousel of pain points -->
+  <div class="carousel-container">
+    <div class="carousel">
+      <div class="carousel-slide"><img src="media/baby mimo firefly 1.png" alt="Don't want to miss details" /></div>
+      <div class="carousel-slide"><img src="media/baby mimo firefly 2.png" alt="Don't want to share on social" /></div>
+      <div class="carousel-slide"><img src="media/baby mimo firefly 3.png" alt="Don't want to hop between apps" /></div>
+      <div class="carousel-slide"><img src="media/baby mimo firefly 4.png" alt="Don't want to dig through albums" /></div>
+    </div>
+    <div class="carousel-dots">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+  </div>
+
+  <div class="gallery-scroll">
     <img src="media/image-intro1.png" alt="Intro" />
     <img src="media/image-intro2.png" alt="Intro 2" />
     <img src="media/image-intro3.png" alt="Intro 3" />
@@ -596,11 +697,11 @@
         <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <div class="phone-frame"><video src="media/video - invite family members.MP4#t=0.001" controls playsinline muted></video></div>
+            <div class="phone-frame"><video src="media/video - invite family members.MP4#t=0.001" controls playsinline muted autoplay></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👴 Uncle · Family</span>
-            <div class="phone-frame"><video src="media/video - family member accepts invite.MP4#t=0.001" controls playsinline muted></video></div>
+            <div class="phone-frame"><video src="media/video - family member accepts invite.MP4#t=0.001" controls playsinline muted autoplay></video></div>
           </div>
         </div>
       </div>
@@ -616,11 +717,11 @@
         <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <div class="phone-frame"><video src="media/video - tapless feed logging with siri.MP4#t=0.001" controls playsinline muted></video></div>
+            <div class="phone-frame"><video src="media/video - tapless feed logging with siri.MP4#t=0.001" controls playsinline muted autoplay></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👨 Dad · Family</span>
-            <div class="phone-frame"><video src="media/video - shared baby's profile status got updated by syncing with mom's feed log event real time.MP4#t=0.001" controls playsinline muted></video></div>
+            <div class="phone-frame"><video src="media/video - shared baby's profile status got updated by syncing with mom's feed log event real time.MP4#t=0.001" controls playsinline muted autoplay></video></div>
           </div>
         </div>
       </div>
@@ -636,11 +737,11 @@
         <div class="gallery-scroll">
           <div class="video-pair-col">
             <span class="role-badge owner">👩 Mom · Owner</span>
-            <div class="phone-frame"><video src="media/video - new moment created effortlessly.MP4#t=0.001" controls playsinline muted></video></div>
+            <div class="phone-frame"><video src="media/video - new moment created effortlessly.MP4#t=0.001" controls playsinline muted autoplay></video></div>
           </div>
           <div class="video-pair-col">
             <span class="role-badge family">👴 Grandpa · Family</span>
-            <div class="phone-frame"><video src="media/video - uncle gets notification of new baby moment added by mom real time.MOV#t=0.001" controls playsinline muted></video></div>
+            <div class="phone-frame"><video src="media/video - uncle gets notification of new baby moment added by mom real time.MOV#t=0.001" controls playsinline muted autoplay></video></div>
           </div>
         </div>
       </div>
@@ -650,25 +751,25 @@
     <!-- Solo videos -->
     <p class="solo-label">What's More</p>
     <div class="video-grid">
-      <div class="video-card">
+      <!-- <div class="video-card">
         <div class="video-card-label">🍎 Sign in with Apple — zero setup</div>
-        <div class="phone-frame"><video src="media/video - easy login through icloud.MP4#t=0.001" controls playsinline muted></video></div>
-      </div>
+        <div class="phone-frame"><video src="media/video - easy login through icloud.MP4#t=0.001" controls playsinline muted autoplay></video></div>
+      </div> -->
       <div class="video-card">
         <div class="video-card-label">🎙️ Tapless diaper log via Siri</div>
-        <div class="phone-frame"><video src="media/video - tapless diaper logging with siri.mp4#t=0.001" controls playsinline muted></video></div>
+        <div class="phone-frame"><video src="media/video - tapless diaper logging with siri.mp4#t=0.001" controls playsinline muted autoplay></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🔒 Live status on your lock screen</div>
-        <div class="phone-frame"><video src="media/video - adding lock screen widget for live baby status.MOV#t=0.001" controls playsinline muted></video></div>
+        <div class="phone-frame"><video src="media/video - adding lock screen widget for live baby status.MOV#t=0.001" controls playsinline muted autoplay></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">📬 Timeline to postcard (Physical card coming soon)</div>
-        <div class="phone-frame"><video src="media/video1 - timeline to postcard.mov#t=0.001" controls playsinline muted></video></div>
+        <div class="phone-frame"><video src="media/video1 - timeline to postcard.mov#t=0.001" controls playsinline muted autoplay></video></div>
       </div>
       <div class="video-card">
         <div class="video-card-label">🤰 Pregnancy to newborn transition</div>
-        <div class="phone-frame"><video src="media/video2 - pregancy to baby born transit.mov#t=0.001" controls playsinline muted></video></div>
+        <div class="phone-frame"><video src="media/video2 - pregancy to baby born transit.mov#t=0.001" controls playsinline muted autoplay></video></div>
       </div>
     </div>
 
@@ -781,5 +882,44 @@
   <p>&copy; 2026 Baby Mimo. All rights reserved.</p>
 </footer>
 
+<script>
+  let currentSlideIndex = 0;
+  const totalSlides = 4;
+  const autoRotateInterval = 4000; // 4 seconds
+
+  function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    if (index >= totalSlides) currentSlideIndex = 0;
+    if (index < 0) currentSlideIndex = totalSlides - 1;
+
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[currentSlideIndex].classList.add('active');
+    dots[currentSlideIndex].classList.add('active');
+  }
+
+  function currentSlide(index) {
+    currentSlideIndex = index;
+    showSlide(currentSlideIndex);
+    resetAutoRotate();
+  }
+
+  function nextSlide() {
+    currentSlideIndex++;
+    showSlide(currentSlideIndex);
+  }
+
+  function resetAutoRotate() {
+    clearInterval(window.carouselInterval);
+    window.carouselInterval = setInterval(nextSlide, autoRotateInterval);
+  }
+
+  // Initialize carousel
+  showSlide(currentSlideIndex);
+  resetAutoRotate();
+</script>
 </body>
 </html>
