@@ -178,7 +178,9 @@
   <p>You can invite family members to access a baby's profile. When you share:</p>
   <ul>
     <li>Invited members can view the baby's profile, moments, photos, and growth data, depending on the role you assign (Parent, Caregiver, or Viewer).</li>
-    <li>You control who has access and can revoke access at any time.</li>
+    <li>You control who has access and can revoke access at any time from the app.</li>
+    <li>If you delete a baby profile, all family members immediately lose access and the profile is removed from their devices.</li>
+    <li>Family members can also choose to leave a shared profile at any time; doing so removes it from their device without affecting the owner's data.</li>
     <li>Your personal account information is not shared with invited members.</li>
     <li>Shared data is stored in Apple's CloudKit shared database.</li>
   </ul>
@@ -201,8 +203,15 @@
   <ul>
     <li><strong>Moment deletion:</strong> When you delete a moment, it is soft-deleted (hidden from the app) and permanently removed after 30 days. This delay ensures the deletion syncs reliably across all your devices and shared family members.</li>
     <li><strong>Media deletion:</strong> When you remove a photo or video from a moment, the media file is soft-deleted and permanently removed after 30 days, following the same sync-safe deletion process as moments.</li>
-    <li><strong>Profile deletion:</strong> Deleting a baby profile removes all associated data, including moments, media, and growth measurements.</li>
-    <li><strong>Account deletion:</strong> You can delete your account, which removes your personal data.</li>
+    <li><strong>Baby profile deletion (owner):</strong> When an owner deletes a baby profile:
+      <ul>
+        <li><em>Immediately:</em> All data for that profile — moments, photos, videos, growth records, and status history — is permanently deleted from iCloud. Any family members with shared access have their access revoked immediately and the profile is removed from their view.</li>
+        <li><em>On next app launch:</em> Remaining references to the deleted profile are cleaned up from the owner's local device storage.</li>
+        <li>This deletion is <strong>permanent and cannot be undone.</strong> It is not subject to the 30-day soft-delete window that applies to individual moment or media deletion.</li>
+      </ul>
+    </li>
+    <li><strong>Leaving a shared profile (family member):</strong> If you were invited to access a baby profile and choose to leave, you are removed from the shared access. The owner's data is not affected. Your local copy of the profile is removed from your device.</li>
+    <li><strong>Account deletion:</strong> You can delete your account from Settings. This permanently removes your profile, all baby profiles you own (including their moments, media, and growth data), and all associated iCloud data. Family members sharing your babies will lose access. All iCloud data is removed immediately.</li>
     <li><strong>iCloud data:</strong> Data stored in iCloud is subject to Apple's data retention policies. You can manage your iCloud storage through your device settings.</li>
   </ul>
 
