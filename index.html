@@ -91,6 +91,37 @@
     }
     .nav-cta:hover { opacity: 0.85; }
 
+    /* Baby Tracker ⇄ Daycare switch */
+    .app-switch {
+      display: inline-flex;
+      background: var(--light);
+      border: 1px solid #ececec;
+      border-radius: 50px;
+      padding: 3px;
+      margin-left: auto;
+      margin-right: 14px;
+    }
+    .app-switch a {
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 50px;
+      color: var(--gray);
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .app-switch a.active {
+      background: var(--accent);
+      color: var(--dark);
+      box-shadow: 0 1px 6px rgba(245,182,73,0.35);
+    }
+    .app-switch a:not(.active):hover { color: var(--dark); }
+    @media (max-width: 600px) {
+      nav { flex-wrap: wrap; gap: 8px; }
+      .app-switch { margin-left: 0; margin-right: 0; order: 3; }
+    }
+
     /* ── HERO ── */
     .hero {
       background: linear-gradient(160deg, #FFF6E6 0%, #ffffff 60%);
@@ -645,6 +676,10 @@
     <img src="media/yoora icon.png" alt="Yoora" style="width:28px;height:28px;border-radius:6px;vertical-align:middle;margin-right:8px;">
     Yoora
   </a>
+  <div class="app-switch" aria-label="Choose app">
+    <a href="./" class="active" aria-current="page">Baby Tracker</a>
+    <a href="daycare.html">Daycare</a>
+  </div>
   <a class="nav-cta" href="https://apps.apple.com/us/app/baby-mimo/id6757408670" target="_blank">Download Now</a>
 </nav>
 
